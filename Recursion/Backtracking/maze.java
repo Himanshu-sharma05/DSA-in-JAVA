@@ -6,7 +6,8 @@ public class maze {
     public static void main(String[] args) {
         // System.out.println(count(3,3));
         // path("",3,3);
-        System.out.println(pathRet("", 3, 3));
+        // System.out.println(pathRet("", 3, 3));
+        System.out.println(pathRetDiag("",3,3));
     }
 
     static int count(int c,int r){
@@ -44,6 +45,27 @@ public class maze {
         }
         if(c>1){
             list.addAll(pathRet(p + 'R',c-1,r));
+        }
+        return list;
+    }
+
+    static ArrayList<String> pathRetDiag(String p,int c,int r){
+        if(c == 1 && r == 1){
+            ArrayList<String> newList = new ArrayList<String>();
+            newList.add(p);
+            return newList;
+        }
+        ArrayList<String> list = new ArrayList<String>();
+
+        if(r>1 && c>1){
+            list.addAll(pathRetDiag(p + 'D',c-1,r-1));
+        }
+
+        if(r>1){
+            list.addAll(pathRetDiag(p + 'V', c, r-1));
+        }
+        if(c>1){
+            list.addAll(pathRetDiag(p + 'H',c-1,r));
         }
         return list;
     }
