@@ -7,7 +7,11 @@ public class maze {
         // System.out.println(count(3,3));
         // path("",3,3);
         // System.out.println(pathRet("", 3, 3));
-        System.out.println(pathRetDiag("",3,3));
+        // System.out.println(pathRetDiag("",3,3));
+        boolean[][] maze = {
+            {true,true,true},{true,false,true},{true,true,true}
+        };
+        pathObstacles("", maze, 0, 0);
     }
 
     static int count(int c,int r){
@@ -68,6 +72,25 @@ public class maze {
             list.addAll(pathRetDiag(p + 'H',c-1,r));
         }
         return list;
+    }
+
+    static void pathObstacles(String p,boolean[][] maze,int c,int r){
+        if(c == maze[0].length - 1 && r == maze.length - 1){
+            System.out.println(p);
+            return;
+        }
+
+        if(!maze[r][c]){
+            return;
+        }
+
+        if(r < maze.length - 1){
+            pathObstacles(p + 'D', maze, c, r+1);
+        }
+        if(c < maze[0].length - 1){
+            pathObstacles(p + "R",maze,c+1,r);
+        }
+
     }
 
 }
