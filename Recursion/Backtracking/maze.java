@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class maze {
     public static void main(String[] args) {
-        // System.out.println(count(3,3));
+        System.out.println(count(3,3));
         // path("",3,3);
         // System.out.println(pathRet("", 3, 3));
         // System.out.println(pathRetDiag("",3,3));
-        boolean[][] maze = {
-            {true,true,true},{true,false,true},{true,true,true}
-        };
-        pathObstacles("", maze, 0, 0);
+        // boolean[][] maze = {
+        //     {true,true,true},{true,false,true},{true,true,true}
+        // };
+        // pathObstacles("", maze, 0, 0);
     }
 
     static int count(int c,int r){
-        if(r == 1 && c == 1){
+        if(r == 1 || c == 1){
             return 1;
         }
         int left = count(c,r-1);
